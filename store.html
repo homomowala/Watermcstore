@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreeWaterMC Store</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to FreeWaterMC Store</h1>
+    </header>
+
+    <!-- Minecraft Username Login Section -->
+    <section class="login">
+        <h2>Login with Your Minecraft Username</h2>
+        <form id="login-form">
+            <input type="text" id="minecraft-username" placeholder="Enter your Minecraft username" required>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        <p id="login-message"></p>
+    </section>
+
+    <!-- Coin Balance Display -->
+    <section class="coin-balance" style="display:none;">
+        <h3>Your Coin Balance: <span id="coin-amount">0</span> Coins</h3>
+    </section>
+
+    <!-- Store Section -->
+    <section class="store" style="display:none;">
+        <h2>Available Ranks</h2>
+
+        <!-- Alien Rank -->
+        <div class="store-item">
+            <h3>Alien Rank - ₹250 (700 Coins)</h3>
+            <p>Get access to exclusive perks with the Alien Rank.</p>
+            <button class="add-to-cart-button" onclick="addToCart('Alien Rank', 700)">Add to Cart</button>
+        </div>
+
+        <!-- Legend Rank -->
+        <div class="store-item">
+            <h3>Legend Rank - ₹400 (1500 Coins)</h3>
+            <p>Unlock higher privileges with the Legend Rank.</p>
+            <button class="add-to-cart-button" onclick="addToCart('Legend Rank', 1500)">Add to Cart</button>
+        </div>
+
+        <!-- Crown Rank -->
+        <div class="store-item">
+            <h3>Crown Rank - ₹600 (2500 Coins)</h3>
+            <p>Become a Crowned player with the ultimate rank.</p>
+            <button class="add-to-cart-button" onclick="addToCart('Crown Rank', 2500)">Add to Cart</button>
+        </div>
+
+        <!-- Coins Purchase -->
+        <div class="store-item">
+            <h3>Buy Coins</h3>
+            <button class="add-to-cart-button" onclick="addToCart('1000 Coins', 1000)">Add 1000 Coins</button>
+            <button class="add-to-cart-button" onclick="addToCart('5000 Coins', 5000)">Add 5000 Coins</button>
+        </div>
+
+        <!-- Cart Section -->
+        <section id="cart-section" style="display:none;">
+            <h3>Your Cart</h3>
+            <ul id="cart-items"></ul>
+            <p>Total Coins: <span id="cart-total">0</span></p>
+            <button id="checkout-button" onclick="checkout()">Proceed to Checkout</button>
+        </section>
+
+        <div class="ticket-message">
+            <p>After purchasing your rank or coins, please join our Discord server and create a store ticket by typing <code>!ticket create</code> in the ticket channel.</p>
+            <p>Click <a href="https://discord.gg/9SavC3fbsa" target="_blank">here</a> to join our Discord server.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FreeWaterMC</p>
+    </footer>
+
+    <script>
+        let coinBalance = 1000; // Starting coin balance (this can be fetched from server in real use)
+        const loginForm = document.getElementById('login-form');
+        const usernameInput = document.getElementById('minecraft-username');
+        const loginMessage = document.getElementById('login-message');
+        const coinAmountElement = document.getElementById('coin-amount');
+        const cartItemsElement = document.getElementById('cart-items');
+        const cartTotalElement = document.getElementById('cart-total');
+        const cartSection = document.getElementById('cart-section');
+
+        let cart = []; // Initialize cart array to hold items
+
+        // Handle login
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = usernameInput.value.trim();
+
+            if (username) {
+                // Simulate successful login
+                loginMessage.textContent = `Welcome, ${username}! You have ${coinBalance} coins.`;
+                loginMessage.style.color = 'green';
+                usernameInput.disabled = true;
+                document.querySelector('.store').style.display = 'block';  // Show the store after login
+                document.querySelector('.coin-balance').style.display = 'block';  // Show coin balance
+                coinAmountElement.textContent = coinBalance;  // Update coin balance on screen
+            } else {
+                loginMessage.textContent = 'Please enter a valid Minecraft username.';
+                loginMessage.style.color = 'red';
+            }
+        });
+
+        // Add an item to the cart
+        function addToCart(itemName, itemCost) {
+            cart.push({ name: itemName, cost: itemCost });
+            updateCart();
+        }
+
+        // Update the cart display and total
+        function updateCart() {
+            cartItemsElement.innerHTML = '';  // Clear current cart items
+            let totalCoins = 0;
+            cart.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item.name} - ${item.cost} Coins`;
+                cartItemsElement.appendChild(listItem);
+                totalCoins += item.cost;
+            });
+            cartTotalElement.textContent = totalCoins;
+            cartSection.style.display = 'block';  // Show the cart section when items are added
+        }
+
+        // Proceed to checkout and redirect to Discord
+        function checkout() {
+            const totalCost = cart.reduce((total, item) => total + item.cost, 0);
+
+            if (coinBalance >= totalCost) {
+                coinBalance -= totalCost; // Deduct the coins from the user's balance
+                coinAmountElement.textContent = coinBalance;  // Update coin balance on screen
+                cart = [];  // Clear the cart after checkout
+                updateCart();  // Update the cart UI
+                alert(`Thank you for your purchase! You have spent ${totalCost} coins.`);
+                window.location.href = 'https://discord.gg/9SavC3fbsa';  // Redirect to Discord server
+            } else {
+                alert('You do not have enough coins to complete this purchase.');
+            }
+        }
+    </script>
+</body>
+</html>
