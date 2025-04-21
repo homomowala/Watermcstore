@@ -1,187 +1,108 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
 body {
-    background-color: #fafafa;
-    color: #333;
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0e0e0e;
+  color: #f2f2f2;
 }
 
-/* Header Styles */
+.navbar {
+  background: #1e1e1e;
+  padding: 1rem;
+  text-align: center;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin: 0 20px;
+}
+
+.navbar a {
+  color: #00d9ff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.navbar a:hover {
+  color: #ffffff;
+}
+
 header {
-    background-color: #2a2a2a;
-    color: #fff;
-    text-align: center;
-    padding: 40px 20px;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  color: white;
+  animation: fadeIn 1s ease-in-out;
 }
 
-h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
+.about, .store {
+  padding: 2rem;
+  animation: fadeIn 1s ease-in-out;
 }
 
-/* Store Section */
-.store {
-    padding: 50px 30px;
-    text-align: center;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 1200px;
-    margin: 50px auto;
+.item {
+  background: #1c1c1c;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #00d9ff33;
+  transition: transform 0.2s;
 }
 
-.store h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 25px;
+.item:hover {
+  transform: scale(1.02);
 }
 
-.store-item {
-    background-color: #f9f9f9;
-    border: 1px solid #ddd;
-    padding: 25px;
-    margin: 20px 0;
-    border-radius: 8px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+.buy-btn, .discord-button {
+  background: #00d9ff;
+  color: #000;
+  padding: 10px 20px;
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s;
 }
 
-.store-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+.buy-btn:hover, .discord-button:hover {
+  background: #00b8d9;
 }
 
-.store-item h3 {
-    font-size: 1.8rem;
-    color: #444;
-    margin-bottom: 15px;
+.login-box {
+  margin-bottom: 2rem;
 }
 
-.store-item p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 20px;
+.login-box input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  width: 200px;
 }
 
-.buy-button {
-    background-color: #4caf50;
-    color: #fff;
-    border: none;
-    padding: 12px 24px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
+.discord-box {
+  background: #1a1a1a;
+  padding: 1rem;
+  border-left: 5px solid #00d9ff;
+  margin-top: 2rem;
 }
 
-.buy-button:hover {
-    background-color: #45a049;
-}
-
-/* Store Ticket Message */
-.ticket-message {
-    font-size: 1rem;
-    color: #666;
-    margin-top: 15px;
-    font-style: italic;
-}
-
-.ticket-message a {
-    color: #3b82f6;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.ticket-message a:hover {
-    color: #2563eb;
-}
-
-/* Back Button */
-.back-link {
-    text-align: center;
-    margin-top: 30px;
-}
-
-.back-button {
-    background-color: #333;
-    color: #fff;
-    padding: 12px 20px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    border: none;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-}
-
-.back-button:hover {
-    background-color: #555;
-}
-
-/* Community Section */
-.community {
-    background-color: #ffffff;
-    padding: 25px;
-    margin-top: 40px;
-    border-radius: 8px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-.community h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.discord-link {
-    color: #3b82f6;
-    text-decoration: none;
-    font-size: 1.2rem;
-    padding: 8px 16px;
-    transition: color 0.3s ease;
-}
-
-.discord-link:hover {
-    color: #2563eb;
-}
-
-/* Footer Section */
 footer {
-    background-color: #2a2a2a;
-    color: #bbb;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
+  text-align: center;
+  padding: 1rem;
+  background: #111;
+  color: #888;
+  margin-top: 3rem;
 }
 
-footer p {
-    font-size: 1rem;
-}
-
-/* Smooth Animations for Button Hover */
-@keyframes hoverEffect {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    50% {
-        transform: scale(1.05);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-}
-
-.buy-button, .back-button {
-    animation: hoverEffect 0.5s ease-in-out infinite;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
