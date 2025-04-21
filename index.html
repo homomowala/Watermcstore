@@ -3,56 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - FreeWaterMC Minecraft Server</title>
-    <link rel="stylesheet" href="styles.css">  <!-- Link to the external CSS file -->
+    <title>FreeWaterMC - Minecraft Server</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#about-server">About</a></li>
+            <li><a href="#store">Store</a></li>
+        </ul>
+    </nav>
 
-<header>
-    <h1>Welcome to FreeWaterMC - About Us</h1>
-</header>
+    <!-- Main Header -->
+    <header>
+        <h1>Welcome to FreeWaterMC</h1>
+    </header>
 
-<section class="server-info">
-    <h2>About FreeWaterMC</h2>
-    <p>Welcome to **FreeWaterMC** – a unique Minecraft experience where you can explore, fight, and create in a world filled with custom mechanics, exciting gameplay, and an amazing community.</p>
-    <p>At FreeWaterMC, we aim to deliver an immersive survival multiplayer experience with custom plugins and features. Whether you're a builder, fighter, or explorer, there's something here for everyone!</p>
-</section>
+    <!-- About Server Section -->
+    <section id="about-server" class="about-server">
+        <h2>About FreeWaterMC</h2>
+        <p>FreeWaterMC is a Minecraft server offering a unique and engaging experience. Our server provides a variety of custom features, including exciting ranks, thrilling gameplay mechanics, and a strong community.</p>
+        <h3>Features:</h3>
+        <ul>
+            <li>Custom Ranks</li>
+            <li>Specialized Events and Challenges</li>
+            <li>Engaging Custom Plugins</li>
+            <li>Dedicated Support</li>
+        </ul>
 
-<section class="server-features">
-    <h2>Server Features</h2>
-    <ul>
-        <li><strong>Custom Plugins:</strong> Our unique **Body Steal mechanic** and other custom plugins to enhance your gameplay.</li>
-        <li><strong>Ranks & Rewards:</strong> Earn ranks, coins, and rewards for your in-game achievements.</li>
-        <li><strong>Immersive World:</strong> Explore a detailed world filled with custom biomes, structures, and challenges.</li>
-        <li><strong>Active Community:</strong> Join our active community and engage in server-wide events and competitions.</li>
-        <li><strong>Exclusive Events:</strong> Participate in custom events like tournaments, treasure hunts, and more.</li>
-    </ul>
-</section>
+        <h3>Join Us:</h3>
+        <p>Join the adventure and become part of the FreeWaterMC community! Connect to our server using the address below:</p>
+        <p><strong>Server Address: <a href="minecraft://play.freewatermc.fun">play.freewatermc.fun</a></strong></p>
 
-<section class="join-us">
-    <h2>How to Join</h2>
-    <p>Joining FreeWaterMC is easy! Follow these steps:</p>
-    <ol>
-        <li>Launch Minecraft (Java Edition or Bedrock Edition).</li>
-        <li>Go to the Multiplayer section and click "Add Server".</li>
-        <li>Enter the server address: <strong>play.freewatermc.fun</strong></li>
-        <li>Click "Join Server" and start your adventure!</li>
-    </ol>
-</section>
+        <div class="discord-invite">
+            <h3>Join our Discord:</h3>
+            <p>For updates, support, and discussions, join our official Discord server:</p>
+            <p><a href="https://discord.gg/9SavC3fbsa" target="_blank">Click here to join our Discord</a></p>
+        </div>
+    </section>
 
-<section class="community">
-    <h2>Join Our Community</h2>
-    <p>Stay connected with us on Discord for news, updates, and community events.</p>
-    <a href="https://discord.gg/your-discord-link" class="discord-link" target="_blank">Join our Discord!</a>
-</section>
+    <!-- Store Section (For future implementation) -->
+    <section id="store" class="store" style="display:none;">
+        <h2>Store Coming Soon!</h2>
+        <p>Our store will be available soon. Stay tuned for exciting ranks and items you can purchase!</p>
+    </section>
 
-<section class="back-link">
-    <button class="back-button" onclick="window.location.href='index.html'">Back to Login</button>
-</section>
+    <footer>
+        <p>&copy; 2025 FreeWaterMC. All rights reserved.</p>
+    </footer>
 
-<script>
-    // You can add any JavaScript if needed for extra functionality
-</script>
+    <script>
+        // Navigation bar functionality to smoothly scroll to sections
+        const navLinks = document.querySelectorAll('.navbar a');
 
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault();
+                const targetId = event.target.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
